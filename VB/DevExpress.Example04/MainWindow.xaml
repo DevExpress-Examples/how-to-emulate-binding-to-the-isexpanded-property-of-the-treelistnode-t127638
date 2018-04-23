@@ -1,0 +1,60 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" x:Class="DevExpress.Example04.MainWindow"
+        xmlns:data="clr-namespace:DevExpress.Example04.Data"
+        xmlns:self="clr-namespace:DevExpress.Example04"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:mvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm" WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="550" Width="725">
+    <Window.Resources>
+        <HierarchicalDataTemplate DataType="{x:Type data:Parent}" ItemsSource="{Binding Children}"/>
+        <HierarchicalDataTemplate DataType="{x:Type data:Child}" ItemsSource="{Binding Toys}"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <dxg:GridControl ItemsSource="{Binding Items}" Grid.ColumnSpan="2">
+            <mvvm:Interaction.Behaviors>
+                <self:BindableExpandingBehavior ExpandingProperty="IsExpanded"/>
+            </mvvm:Interaction.Behaviors>
+            <dxg:GridControl.View>
+                <dxg:TreeListView AllowPerPixelScrolling="True" ShowTotalSummary="True" TreeDerivationMode="HierarchicalDataTemplate"/>
+            </dxg:GridControl.View>
+            <dxg:GridControl.Columns>
+                <dxg:GridColumn FieldName="Name" VisibleIndex="0"/>
+                <dxg:GridColumn FieldName="Age" VisibleIndex="1"/>
+            </dxg:GridControl.Columns>
+        </dxg:GridControl>
+        
+        <TextBlock Text="Parents" Grid.Row="1" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+        
+        <dxg:GridControl Grid.Row="2" AutoGenerateColumns="AddNew" x:Name="parents"
+                        EnableSmartColumnsGeneration="True" ItemsSource="{Binding Items}">
+            <dxg:GridControl.View>
+                <dxg:TableView CellValueChanging="TableView_CellValueChanging" AllowGrouping="False"/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+        
+        <TextBlock Text="Selected Parent's children" Grid.Row="1" Grid.Column="1" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center"/>
+        <dxg:GridControl Grid.Row="2" Grid.Column="1" AutoGenerateColumns="AddNew"
+                        EnableSmartColumnsGeneration="True" ItemsSource="{Binding ElementName=parents, Path=SelectedItem.Children}">
+            <dxg:GridControl.View>
+                <dxg:TableView CellValueChanging="TableView_CellValueChanging" AllowGrouping="False"/>
+            </dxg:GridControl.View>
+        </dxg:GridControl>
+        
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+            <Button Content="Clear" Click="Button_Click" Padding="15,0" Margin="10,0"/>
+            <Button Content="Add new" Click="Button_Click_1" Padding="15,0" Margin="10,0"/>
+        </StackPanel>
+    </Grid>
+</Window>
