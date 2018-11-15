@@ -1,3 +1,12 @@
+<!-- default file list -->
+*Files to look at*:
+
+* [BindableExpandingBehavior.cs](./CS/DevExpress.Example04/BindableExpandingBehavior.cs) (VB: [BindableExpandingBehavior.vb](./VB/DevExpress.Example04/BindableExpandingBehavior.vb))
+* [DataHelper.cs](./CS/DevExpress.Example04/Data/DataHelper.cs) (VB: [DataHelper.vb](./VB/DevExpress.Example04/Data/DataHelper.vb))
+* [Parent.cs](./CS/DevExpress.Example04/Data/Parent.cs) (VB: [Parent.vb](./VB/DevExpress.Example04/Data/Parent.vb))
+* **[MainWindow.xaml](./CS/DevExpress.Example04/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/DevExpress.Example04/MainWindow.xaml))**
+* [MainWindow.xaml.cs](./CS/DevExpress.Example04/MainWindow.xaml.cs) (VB: [MainWindow.xaml](./VB/DevExpress.Example04/MainWindow.xaml))
+<!-- default file list end -->
 # How to emulate Binding to the IsExpanded property of the TreeListNode
 
 
