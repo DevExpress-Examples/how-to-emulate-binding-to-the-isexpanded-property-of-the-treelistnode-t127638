@@ -13,7 +13,7 @@
 * **[MainWindow.xaml](./CS/DevExpress.Example04/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/DevExpress.Example04/MainWindow.xaml))**
 * [MainWindow.xaml.cs](./CS/DevExpress.Example04/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/DevExpress.Example04/MainWindow.xaml.vb))
 <!-- default file list end -->
-# How to emulate Binding to the IsExpanded property of the TreeListNode
+# WPF Grid (TreeListView) - Sync TreeListNode Expansion with ViewModel
 
 
 <p>Because the TreeListNode’s IsExpanded property is not a DependencyProperty, there is no way to create TwoWay binding between the IsExpanded and data source item’s property. The example demonstrates how to emulate this functionality using behaviors.</p>
