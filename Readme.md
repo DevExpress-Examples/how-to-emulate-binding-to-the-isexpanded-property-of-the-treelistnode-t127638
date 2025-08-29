@@ -13,7 +13,7 @@ This example adds two-way synchronization between the expansion state of [`TreeL
 
 DevExpress does not expose the [`IsExpanded`](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.TreeListNode.IsExpanded) property as a `DependencyProperty`, so direct data binding is not possible. This example uses a custom behavior (`BindableExpandingBehavior`) to simulate two-way binding and keep the [`TreeListView`](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.TreeListView) state in sync with the underlying `ViewModel`.
 
-Use this technique to:
+You can use this technique to:
 
 * Keep expansion states consistent across user sessions.
 
