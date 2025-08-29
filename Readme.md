@@ -19,25 +19,25 @@ You can use this technique to:
 
 * Manage node expanded/collapsed states in code at the data model level.
 
-* Respond to UI actions through the `ViewModel`.
+* Respond to UI actions using the `ViewModel`.
 
-You can reuse the `BindableExpandingBehavior` in any [`GridControl`](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.GridCell.GridControl) that uses a hierarchical `TreeListView`.
+You can reuse the `BindableExpandingBehavior` class in any [`GridControl`](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.GridCell.GridControl) that includes a hierarchical `TreeListView`.
 
 ## Implementation Details
 
 ### Bindable Expanding Behavior
 
-The `BindableExpandingBehavior` class syncs `TreeListNode` expansion with a `Boolean` property in your `ViewModel`:
+The `BindableExpandingBehavior` class synchronizes the `TreeListNode` expanded state with a `Boolean` property in your `ViewModel`:
 
 * Attach the behavior to a `GridControl` and set the `ExpandingProperty` to the name of your `Boolean` property (for example, `IsExpanded`).
 
-* When the `IsExpanded` property changes in the data object, the corresponding node in the tree expands or collapses automatically.
+* Every time the `IsExpanded` property value changes in the data object, the corresponding node expands or collapses automatically.
 
 * When a user expands or collapses a node in the UI, the behavior updates the `IsExpanded` property in the bound object.
 
-The logic is handled in two directions:
+State synchronization is implemented as two event handlers corresponding to forward and reverse directions:
 
-1. When data changes
+1. Forward synchronization (when data changes)
 
 ```csharp
 public void PropertyChanged(object obj, PropertyChangedEventArgs args) {
@@ -48,7 +48,7 @@ public void PropertyChanged(object obj, PropertyChangedEventArgs args) {
 }
 ```
 
-2. When the user expands/collapses a node
+2. Reverse synchronization (when a user expands/collapses a node)
 
 ```csharp
 void GridNodeChanged(object sender, TreeListNodeEventArgs e) {
@@ -59,7 +59,7 @@ void GridNodeChanged(object sender, TreeListNodeEventArgs e) {
 
 ### Data Model
 
-`Parent` and `Child` classes both expose the `IsExpanded` property that participates in synchronization:
+Both `Parent` and `Child` classes expose the `IsExpanded` property required for synchronization:
 
 ```csharp
 public bool IsExpanded {
@@ -68,15 +68,15 @@ public bool IsExpanded {
 }
 ```
 
-Each `Parent` contains a list of `Child` objects, and each `Child` can contain a list of `Toy` objects, creating a three-level tree structure.
+Each `Parent` contains a list of `Child` objects. In turn, each `Child` can contain a list of `Toy` objects, therefore, creating a three-level tree structure.
 
-The `DataHelper` class generates a large collection of `Parent` objects with nested children.
+The `DataHelper` class generates a large collection of `Parent` objects populated with nested `Child` objects.
 
 ### Setup View
 
 The main window binds the `GridControl` to an `ObservableCollection<Parent>`. Each `Parent` has a collection of `Child` objects, and each `Child` has a collection of `Toy` items. The `TreeListView` displays this hierarchy across three levels.
 
-To synchronize node expansion with the `ViewModel`, the grid includes the `BindableExpandingBehavior`:
+To synchronize node expanded states with the `ViewModel`, the grid includes the `BindableExpandingBehavior` class as follows:
 
 ```xaml
 <dxg:GridControl ItemsSource="{Binding Parents}" AutoGenerateColumns="None">
