@@ -33,7 +33,7 @@ You can reuse the `BindableExpandingBehavior` class in any [`GridControl`](https
 
 The `BindableExpandingBehavior` class synchronizes the `TreeListNode` expanded state with a `Boolean` property in your `ViewModel`:
 
-* Attach the behavior to a `GridControl` and set the `ExpandingProperty` to the name of your `Boolean` property (for example, `IsExpanded`).
+* The example attaches `BindableExpandingBehavior` to the `GridControl` and sets its `ExpandingProperty` to `IsExpanded` (the name of the property declared in each data item).
 
 * Every time the `IsExpanded` property value changes in the data object, the corresponding node expands or collapses automatically.
 
