@@ -15,7 +15,7 @@ DevExpress does not expose the [`IsExpanded`](https://docs.devexpress.com/WPF/De
 
 You can use this technique to:
 
-* Keep expansion states consistent across user sessions.
+* Maintain node expanded state consistency across user sessions.
 
 * Programmatically control expanded/collapsed states from the data model.
 
