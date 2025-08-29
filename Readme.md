@@ -37,7 +37,7 @@ The `BindableExpandingBehavior` class synchronizes the `TreeListNode` expanded s
 
 * Every time the `IsExpanded` property value changes in the data object, the corresponding node expands or collapses automatically.
 
-* When a user expands or collapses a node in the UI, the behavior updates the `IsExpanded` property in the bound object.
+* When a user expands or collapses a node in the UI, `BindableExpandingBehavior` updates the `IsExpanded` property value for the bound object.
 
 State synchronization is implemented as two event handlers corresponding to forward and reverse directions:
 
