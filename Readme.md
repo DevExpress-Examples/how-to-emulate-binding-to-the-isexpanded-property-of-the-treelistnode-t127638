@@ -7,7 +7,7 @@
 
 # WPF Grid (TreeListView) - Sync TreeListNode Expansion with ViewModel
 
-This example adds two-way synchronization between the expansion state of [`TreeListNode`](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.TreeListNode) and a `Boolean` property in the `ViewModel`.
+This example adds two-way synchronization between the expanded state of each [`TreeListNode`](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.TreeListNode) and a `Boolean` property in the `ViewModel`.
 
 ![Sync TreeListNode Expansion with ViewModel](./Images/grid.jpg)
 
