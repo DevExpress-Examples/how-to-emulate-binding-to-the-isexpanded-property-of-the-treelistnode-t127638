@@ -11,7 +11,11 @@ This example adds two-way synchronization between the expanded state of each [`T
 
 ![Sync TreeListNode Expansion with ViewModel](./Images/grid.jpg)
 
-DevExpress does not expose the [`IsExpanded`](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.TreeListNode.IsExpanded) property as a `DependencyProperty`, so direct data binding is not possible. This example uses a custom behavior (`BindableExpandingBehavior`) to simulate two-way binding and keep the [`TreeListView`](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.TreeListView) state in sync with the underlying `ViewModel`.
+[`IsExpanded`](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.TreeListNode.IsExpanded) is not a dependency property. Therefore, you cannot bind this property directly to a `Boolean` property in your data model.
+
+This example defines a helper class (`BindableExpandingBehavior`) that attaches to a `GridControl` and synchronizes the expanded state for each node with the [`IsExpanded`](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.TreeListNode.IsExpanded) property in bound data objects.
+
+The `BindableExpandingBehavior` class updates each node in response to underlying property value changes. This helper class also tracks expand/collapse actions in the UI and updates the corresponding data property to reflect the change.
 
 You can use this technique to:
 
