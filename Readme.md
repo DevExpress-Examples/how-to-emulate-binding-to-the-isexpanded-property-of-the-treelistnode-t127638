@@ -17,7 +17,7 @@ You can use this technique to:
 
 * Maintain node expanded state consistency across user sessions.
 
-* Programmatically control expanded/collapsed states from the data model.
+* Manage node expanded/collapsed states in code at the data model level.
 
 * Respond to UI actions through the `ViewModel`.
 
