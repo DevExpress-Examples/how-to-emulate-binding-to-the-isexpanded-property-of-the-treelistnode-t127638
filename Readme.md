@@ -11,7 +11,7 @@ This example adds two-way synchronization between the expanded state of each [`T
 
 ![Sync TreeListNode Expansion with ViewModel](./Images/grid.jpg)
 
-[`IsExpanded`](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.TreeListNode.IsExpanded) is not a dependency property. Therefore, you cannot bind this property directly to a `Boolean` property in your data model.
+[`IsExpanded`](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.TreeListNode.IsExpanded) is not a dependency property - you cannot bind this property directly to a `Boolean` property in your data model.
 
 This example defines a helper class (`BindableExpandingBehavior`) that attaches to a `GridControl` and synchronizes the expanded state for each node with the [`IsExpanded`](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.TreeListNode.IsExpanded) property in bound data objects.
 
@@ -31,7 +31,7 @@ You can reuse the `BindableExpandingBehavior` class in any [`GridControl`](https
 
 ### Bindable Expanding Behavior
 
-The `BindableExpandingBehavior` class synchronizes the `TreeListNode` expanded state with a `Boolean` property in your `ViewModel`:
+The `BindableExpandingBehavior` class synchronizes the `TreeListNode`'s expanded state with a `Boolean` property in your `ViewModel`:
 
 * The example attaches `BindableExpandingBehavior` to the `GridControl` and sets its `ExpandingProperty` to `IsExpanded` (the name of the property declared in each data item).
 
@@ -72,7 +72,7 @@ public bool IsExpanded {
 }
 ```
 
-Each `Parent` contains a list of `Child` objects. In turn, each `Child` can contain a list of `Toy` objects, therefore, creating a three-level tree structure.
+Each `Parent` contains a list of `Child` objects. In turn, each `Child` can contain a list of `Toy` objects, creating a three-level tree structure.
 
 The `DataHelper` class generates a large collection of `Parent` objects populated with nested `Child` objects.
 
